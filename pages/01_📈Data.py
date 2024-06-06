@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-@st.cache_resource
+@st.cache_resource(show_spinner="Connecting to Database......")
 def get_db_connection():
     connection_string = (
         "DRIVER={SQL Server};"
@@ -21,7 +21,7 @@ def get_db_connection():
     )
     return pyodbc.connect(connection_string)
 
-@st.cache_data
+@st.cache_data(show_spinner="Loading data...")
 def get_sql_data(_connection):
     churn_data_query = "SELECT * FROM dbo.LP2_Telco_churn_first_3000"
     return pd.read_sql_query(churn_data_query, _connection)

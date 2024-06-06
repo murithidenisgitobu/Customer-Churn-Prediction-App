@@ -7,12 +7,6 @@ st.set_page_config(
     layout="wide"
 )
 
-# # Title and introduction
-st.markdown(
-    "<h1 style='color: rgb(135, 206, 250);'>CUSTOMER CHURN PREDICTION APPLICATION</h1>",
-    unsafe_allow_html=True
-)
-
 # Create two columns
 col1, col2 = st.columns(2)
 
@@ -64,18 +58,3 @@ with col2:
      - **GitHub**: [GitHub Profile](https://github.com/murithidenisgitobu/)
      - **Medium**: [Medium Profile](https://medium.com/murithidenisgitobu)
      """)
-
-# Apply CSS styling to headers and expanders
-st.markdown(
-    """
-    <style>
-    .st-ewqq1 { /* Header */
-        color: rgb(135, 206, 250);
-    }
-    .st-efmTfQ { /* Expander */
-        color: navy;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
