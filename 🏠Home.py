@@ -66,7 +66,7 @@ with col2:
         Refer to our [documentation](https://github.com/murithidenisgitobu/Customer-Churn-Prediction-App) or contact support.
         
         - **Documentation**: Guides for ML integration.
-        - **Support**: Contact us at iamdenis46@gmail.com.
+        - **Support**: Contact me at iamdenis46@gmail.com.
         """)
 
     st.subheader("About Developer")
