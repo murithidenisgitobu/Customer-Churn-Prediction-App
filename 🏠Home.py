@@ -7,7 +7,25 @@ st.set_page_config(
     layout="wide"
 )
 
-# # Title and introduction
+# Custom CSS for font size
+custom_css = """
+<style>
+h1 {
+    font-size: 24px !important;
+}
+
+h2 {
+    font-size: 20px !important;
+}
+
+p {
+    font-size: 16px !important;
+}
+</style>
+"""
+st.markdown(custom_css, unsafe_allow_html=True)
+
+# Title and introduction
 st.markdown(
     "<h1 style='color: rgb(135, 206, 250);'>CUSTOMER CHURN PREDICTION APPLICATION</h1>",
     unsafe_allow_html=True
@@ -34,7 +52,6 @@ with col1:
              - **Accurate Predictions**: Integrate advanced ML algorithms for accurate predictions.
              - **Data-Driven Decisions**: Leverage comprehensive customer data to inform strategic initiatives.
              - **Variety**: Choose between two advanced ML algorithms for predictions""")
-
 
 with col2:
     st.header("User Benefits",)
