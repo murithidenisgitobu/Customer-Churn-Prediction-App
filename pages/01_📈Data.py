@@ -26,7 +26,6 @@ def get_sql_data(_connection):
     churn_data_query = "SELECT * FROM dbo.LP2_Telco_churn_first_3000"
     return pd.read_sql_query(churn_data_query, _connection)
 
-@st.cache_data
 def get_github_data():
     churn_data_csv = "Data/LP2_Telco-churn-second-2000.csv"
     churn_data = pd.read_csv(churn_data_csv)
