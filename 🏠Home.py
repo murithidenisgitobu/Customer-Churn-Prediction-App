@@ -6,6 +6,7 @@ st.set_page_config(
     page_icon='🏠',
     layout="wide"
 )
+st.markdown("<h1 style='color: skyblue;'>CUSTOMER CHURN PREDICTION APP</h1>", unsafe_allow_html=True)
 
 # Create two columns
 col1, col2 = st.columns(2)
@@ -58,3 +59,4 @@ with col2:
      - **GitHub**: [GitHub Profile](https://github.com/murithidenisgitobu/)
      - **Medium**: [Medium Profile](https://medium.com/murithidenisgitobu)
      """)
+
