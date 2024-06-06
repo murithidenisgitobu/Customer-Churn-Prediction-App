@@ -7,7 +7,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Title and introduction
+# # Title and introduction
 st.markdown(
     "<h1 style='color: rgb(135, 206, 250);'>CUSTOMER CHURN PREDICTION APPLICATION</h1>",
     unsafe_allow_html=True
@@ -22,7 +22,7 @@ with col1:
     
     st.header("Key Features",)
     st.write("""
-    - **Data**: Access data from Vodafone.
+    - **Data**: Access data from Vodafone Telecom.
     - **Dashboard**: Explore interactive data visualizations for insghts.
     - **Predict**: Instantly see predictions for customer attrition.
     - **History**: See past predictions made.
