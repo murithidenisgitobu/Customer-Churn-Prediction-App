@@ -22,7 +22,7 @@ with col1:
     
     st.header("Key Features",)
     st.write("""
-    - **Data**: Acces data from Vodafone.
+    - **Data**: Access data from Vodafone.
     - **Dashboard**: Explore interactive data visualizations for insghts.
     - **Predict**: Instantly see predictions for customer attrition.
     - **History**: See past predictions made.
