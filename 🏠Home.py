@@ -12,10 +12,10 @@ st.markdown("<h1 style='color: skyblue;'>CUSTOMER CHURN PREDICTION APP</h1>", un
 col1, col2 = st.columns(2)
 
 with col1:
-    st.header("Attrition Insight",)
+    st.write("### Attrition Insight",)
     st.write("Predict if a customer is about to churn based on known characteristics using Machine Learning.")
     
-    st.header("Key Features",)
+    st.write("### Key Features",)
     st.write("""
     - **Data**: Access data from Vodafone Telecom.
     - **Dashboard**: Explore interactive data visualizations for insghts.
@@ -24,7 +24,7 @@ with col1:
 
     """)
     
-    st.header("Machine Learning Integration",)
+    st.write("### Machine Learning Integration",)
     st.write("""
              - **Accurate Predictions**: Integrate advanced ML algorithms for accurate predictions.
              - **Data-Driven Decisions**: Leverage comprehensive customer data to inform strategic initiatives.
@@ -32,7 +32,7 @@ with col1:
 
 
 with col2:
-    st.header("User Benefits",)
+    st.write("### User Benefits",)
     st.write("""
     - **Accurate Prediction**: Reduce churn rate.
     - **Data-Driven Decisions**: Inform strategic initiatives.
@@ -47,7 +47,7 @@ with col2:
         - **Support**: Contact us at iamdenis46@gmail.com.
         """)
 
-    st.subheader("About Developer")
+    st.write("#### About Developer")
     st.write("""
     I'm a data analyst/business analyst specializing in leveraging data science to assist businesses.Using advanced analytics and machine learning techniques, I aim to empower businesses with actionable insights for growth and success.
     """)
