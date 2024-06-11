@@ -99,7 +99,7 @@ def form(pipeline, encoder, threshold):
                                                             'Credit card (automatic)'], index=0, key='paymentmethod')
 
         with col2:
-            monthly_charges = st.number_input('Monthly charges', min_value=1, max_value=100000, step=1000, key='monthlycharges')
+            monthly_charges = st.number_input('Monthly charges', min_value=18, max_value=119, step=1, key='monthlycharges')
             internetservice = st.selectbox('Internet service', ['DSL', 'Fiber optic', 'No'], index=0, key='internetservice')
             onlinesecurity = st.selectbox('Online security', ['Yes', 'No', 'No Internet Service'], index=0, key='onlinesecurity')
             onlinebackup = st.selectbox('Online backup', ['Yes', 'No', 'No Internet Service'], index=0, key='onlinebackup')
@@ -107,7 +107,7 @@ def form(pipeline, encoder, threshold):
             techsupport = st.selectbox('Tech support', ['Yes', 'No', 'No Internet Service'], index=0, key='techsupport')  
         
         with col3:
-            total_charges = st.number_input('Total charges', min_value=1, max_value=10000, step=100, key='totalcharges')
+            total_charges = st.number_input('Total charges', min_value=18, max_value=8671, step=1, key='totalcharges')
             streamingtv = st.selectbox('Streaming TV', ['Yes', 'No', 'No Internet Service'], index=0, key='streamingtv')
             streamingmovies = st.selectbox('Streaming movies', ['Yes', 'No', 'No Internet Service'], index=0, key='streamingmovies')
             contract = st.selectbox('Type of contract', ['Month-to-month', 'One year', 'Two year'], index=0, key='contract')
