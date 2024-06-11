@@ -1,0 +1,30 @@
+Gender,Senior Citizen,Partner,Dependents,Tenure,Phone Service,Multiplelines,Internet Service,Online Security,Online Backup,Device Protection,Tech Support,Streaming TV,Streaming Movies,Contract,Paperless Billing,Monthly Charges,Total Charges,Payment Method,Prediction Time,Model Used
+Male,Yes,No,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-Month,No,1,1,Credit card (automatic),2024-06-10 19:15:24.806744,XGB Classifier
+Male,Yes,No,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-Month,No,1,1,Credit card (automatic),2024-06-10 19:15:49.224630,Logistic Regressor
+Male,Yes,No,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-Month,No,1,1,Credit card (automatic),2024-06-10 19:15:54.132496,Logistic Regressor
+Male,Yes,No,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-Month,No,1,1,Credit card (automatic),2024-06-10 19:15:55.285217,Logistic Regressor
+Male,Yes,No,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-Month,No,1,1,Credit card (automatic),2024-06-10 19:16:00.446219,XGB Classifier
+Male,Yes,No,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-Month,No,1,1,Credit card (automatic),2024-06-10 19:16:48.422921,XGB Classifier
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-Month,Yes,1,1,Electronic check,2024-06-10 19:33:35.719313,XGB Classifier
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-Month,Yes,1,1,Electronic check,2024-06-10 19:34:31.798239,Logistic Regressor
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-Month,Yes,1,1,Electronic check,2024-06-10 21:35:18.518420,Logistic Regressor
+,,,,1,,,,,,,,,,,,1,1,,2024-06-10 22:29:50.389507,XGB Classifier
+,,,,1,,,,,,,,,,,,1,1,,2024-06-10 22:30:13.526042,Logistic Regressor
+,,,,1,,,,,,,,,,,,1,1,,2024-06-10 22:34:29.532890,XGB Classifier
+,,,,1,,,,,,,,,,,,1,1,,2024-06-10 22:34:47.338768,Logistic Regressor
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,1,1,2024-06-11 09:41:09.290529,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,1,1,2024-06-11 09:41:23.883148,Logistic Regressor,Yes
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,3001,401,2024-06-11 09:41:37.464706,Logistic Regressor,Yes
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,3001,401,2024-06-11 09:41:39.776926,Logistic Regressor,Yes
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Mailed check,3001,401,2024-06-11 09:41:43.816818,Logistic Regressor,Yes
+Male,Yes,No,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Mailed check,3001,401,2024-06-11 09:42:01.254922,Logistic Regressor,Yes
+Male,Yes,No,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),3001,401,2024-06-11 09:42:13.558022,Logistic Regressor,Yes
+Female,Yes,No,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),3001,401,2024-06-11 09:42:23.947557,Logistic Regressor,Yes
+Female,No,No,Yes,1,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),3001,401,2024-06-11 09:42:41.032442,Logistic Regressor,Yes
+Female,No,No,Yes,1,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),3001,401,2024-06-11 09:42:51.436543,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,1,1,2024-06-11 09:44:01.429029,Logistic Regressor,Yes
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,1,1,2024-06-11 09:45:57.825712,Logistic Regressor,Yes
+Male,Yes,Yes,Yes,16,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,3001,401,2024-06-11 09:46:16.572011,Logistic Regressor,Yes
+Male,Yes,Yes,Yes,72,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,3001,401,2024-06-11 09:46:37.461800,Logistic Regressor,No
+Male,Yes,Yes,Yes,60,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,3001,401,2024-06-11 09:47:00.430477,Logistic Regressor,Yes
+Female,Yes,No,Yes,60,No,No,Fiber optic,Yes,Yes,Yes,Yes,No,No,Month-to-month,Yes,Bank transfer (automatic),3001,401,2024-06-11 09:47:53.572515,Logistic Regressor,Yes
