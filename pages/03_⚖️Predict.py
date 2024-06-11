@@ -99,27 +99,26 @@ def form(pipeline, encoder, threshold):
                                                             'Credit card (automatic)'], index=0, key='paymentmethod')
 
         with col2:
-            monthly_charges = st.number_input('Monthly charges', min_value=1, max_value=100000, step=1000, key='monthlycharges')
+            monthly_charges = st.number_input('Monthly charges', min_value=18, max_value=119, step=1, key='monthlycharges')
             internetservice = st.selectbox('Internet service', ['DSL', 'Fiber optic', 'No'], index=0, key='internetservice')
-            onlinesecurity = st.selectbox('Online security', ['Yes', 'No', 'No Internet Service'], index=0, key='onlinesecurity')
-            onlinebackup = st.selectbox('Online backup', ['Yes', 'No', 'No Internet Service'], index=0, key='onlinebackup')
-            deviceprotection = st.selectbox('Device protection', ['Yes', 'No', 'No Internet Service'], index=0, key='deviceprotection')
-            techsupport = st.selectbox('Tech support', ['Yes', 'No', 'No Internet Service'], index=0, key='techsupport')  
+            onlinesecurity = st.selectbox('Online security', ['Yes', 'No', 'No internet service'], index=0, key='onlinesecurity')
+            onlinebackup = st.selectbox('Online backup', ['Yes', 'No', 'No internet service'], index=0, key='onlinebackup')
+            deviceprotection = st.selectbox('Device protection', ['Yes', 'No', 'No internet service'], index=0, key='deviceprotection')
+            techsupport = st.selectbox('Tech support', ['Yes', 'No', 'No internet service'], index=0, key='techsupport')  
         
         with col3:
-            total_charges = st.number_input('Total charges', min_value=1, max_value=10000, step=100, key='totalcharges')
-            streamingtv = st.selectbox('Streaming TV', ['Yes', 'No', 'No Internet Service'], index=0, key='streamingtv')
-            streamingmovies = st.selectbox('Streaming movies', ['Yes', 'No', 'No Internet Service'], index=0, key='streamingmovies')
+            total_charges = st.number_input('Total charges', min_value=18, max_value=8671, step=1, key='totalcharges')
+            streamingtv = st.selectbox('Streaming TV', ['Yes', 'No', 'No internet service'], index=0, key='streamingtv')
+            streamingmovies = st.selectbox('Streaming movies', ['Yes', 'No', 'No internet service'], index=0, key='streamingmovies')
             contract = st.selectbox('Type of contract', ['Month-to-month', 'One year', 'Two year'], index=0, key='contract')
             paperlessbilling = st.selectbox('Paperless billing', ['Yes', 'No'], index=0, key='paperlessbilling')
-            multiplelines = st.selectbox('Multiple lines', ['Yes', 'No', 'No Internet Service'], index=0, key='multiplelines')
+            multiplelines = st.selectbox('Multiple lines', ['Yes', 'No', 'No phone service'], index=0, key='multiplelines')
         submit_button = st.form_submit_button(label='Submit')
         
         if submit_button:
             make_predictions(pipeline, encoder, threshold)
 
 if __name__ == '__main__':
-    st.title('Make a prediction')
     pipeline, encoder, threshold = select_model()
     form(pipeline, encoder, threshold)
 
