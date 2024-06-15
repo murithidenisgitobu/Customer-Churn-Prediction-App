@@ -21,14 +21,20 @@ def load_lr():
 
 def select_model():
     st.write("### Choose your preferred model")
-    model_choice = st.selectbox('Select model', ['XGB Classifier', 'Logistic Regressor'], key='selected_model')
+    model_options = ['XGB Classifier', 'Logistic Regressor']
+    model_choice = st.selectbox('Select model', ['Choose an option'] + model_options, index=0, key='selected_model')
     
     if model_choice == 'XGB Classifier':
         pipeline, threshold = load_xgb()
-    else:
+    elif model_choice == 'Logistic Regressor':
         pipeline, threshold = load_lr()
+    else:
+        pipeline, threshold = None, None
 
-    encoder = joblib.load("./Model/encoder.joblib")
+    if pipeline and threshold:
+        encoder = joblib.load("./Model/encoder.joblib")
+    else:
+        encoder = None
 
     return pipeline, encoder, threshold
 
@@ -82,6 +88,12 @@ def make_predictions(pipeline, encoder, threshold):
 
     return prediction, probability
 
+# Function to create select box with a watermark
+def selectbox_with_placeholder(label, options, key):
+    placeholder = 'Choose an option'
+    selected = st.selectbox(label, [placeholder] + options, key=key)
+    return selected if selected != placeholder else None
+
 # Input customer information
 def form(pipeline, encoder, threshold):
     st.write("### Enter Customer's Information")
@@ -90,46 +102,66 @@ def form(pipeline, encoder, threshold):
         
         with col1:
             tenure = st.number_input('Months of tenure', min_value=1, max_value=72, key='tenure')
-            gender = st.selectbox('Gender', ['Male', 'Female'], index=0, key='gender')
-            senior_citizen = st.selectbox('Senior Citizen', ['Yes', 'No'], index=0, key='senior_citizen')
-            partner = st.selectbox('Has a partner', ['Yes', 'No'], index=0, key='partner')
-            dependents = st.selectbox('Has dependents', ['Yes', 'No'], index=0, key='dependents')
-            phoneservice = st.selectbox('Has phone service', ['Yes', 'No'], index=0, key='phoneservice')
-            paymentmethod = st.selectbox('Payment method', ['Electronic check', 'Mailed check', 'Bank transfer (automatic)',
-                                                            'Credit card (automatic)'], index=0, key='paymentmethod')
+            gender = selectbox_with_placeholder('Gender', ['Male', 'Female'], key='gender')
+            senior_citizen = selectbox_with_placeholder('Senior Citizen', ['Yes', 'No'], key='senior_citizen')
+            partner = selectbox_with_placeholder('Has a partner', ['Yes', 'No'], key='partner')
+            dependents = selectbox_with_placeholder('Has dependents', ['Yes', 'No'], key='dependents')
+            phoneservice = selectbox_with_placeholder('Has phone service', ['Yes', 'No'], key='phoneservice')
+            paymentmethod = selectbox_with_placeholder('Payment method', ['Electronic check', 'Mailed check', 'Bank transfer (automatic)',
+                                                                         'Credit card (automatic)'], key='paymentmethod')
 
         with col2:
             monthly_charges = st.number_input('Monthly charges', min_value=18, max_value=119, step=1, key='monthlycharges')
-            internetservice = st.selectbox('Internet service', ['DSL', 'Fiber optic', 'No'], index=0, key='internetservice')
-            onlinesecurity = st.selectbox('Online security', ['Yes', 'No', 'No internet service'], index=0, key='onlinesecurity')
-            onlinebackup = st.selectbox('Online backup', ['Yes', 'No', 'No internet service'], index=0, key='onlinebackup')
-            deviceprotection = st.selectbox('Device protection', ['Yes', 'No', 'No internet service'], index=0, key='deviceprotection')
-            techsupport = st.selectbox('Tech support', ['Yes', 'No', 'No internet service'], index=0, key='techsupport')  
+            internetservice = selectbox_with_placeholder('Internet service', ['DSL', 'Fiber optic', 'No'], key='internetservice')
+            onlinesecurity = selectbox_with_placeholder('Online security', ['Yes', 'No', 'No internet service'], key='onlinesecurity')
+            onlinebackup = selectbox_with_placeholder('Online backup', ['Yes', 'No', 'No internet service'], key='onlinebackup')
+            deviceprotection = selectbox_with_placeholder('Device protection', ['Yes', 'No', 'No internet service'], key='deviceprotection')
+            techsupport = selectbox_with_placeholder('Tech support', ['Yes', 'No', 'No internet service'], key='techsupport')  
         
         with col3:
             total_charges = st.number_input('Total charges', min_value=18, max_value=8671, step=1, key='totalcharges')
-            streamingtv = st.selectbox('Streaming TV', ['Yes', 'No', 'No internet service'], index=0, key='streamingtv')
-            streamingmovies = st.selectbox('Streaming movies', ['Yes', 'No', 'No internet service'], index=0, key='streamingmovies')
-            contract = st.selectbox('Type of contract', ['Month-to-month', 'One year', 'Two year'], index=0, key='contract')
-            paperlessbilling = st.selectbox('Paperless billing', ['Yes', 'No'], index=0, key='paperlessbilling')
-            multiplelines = st.selectbox('Multiple lines', ['Yes', 'No', 'No phone service'], index=0, key='multiplelines')
+            streamingtv = selectbox_with_placeholder('Streaming TV', ['Yes', 'No', 'No internet service'], key='streamingtv')
+            streamingmovies = selectbox_with_placeholder('Streaming movies', ['Yes', 'No', 'No internet service'], key='streamingmovies')
+            contract = selectbox_with_placeholder('Type of contract', ['Month-to-month', 'One year', 'Two year'], key='contract')
+            paperlessbilling = selectbox_with_placeholder('Paperless billing', ['Yes', 'No'], key='paperlessbilling')
+            multiplelines = selectbox_with_placeholder('Multiple lines', ['Yes', 'No', 'No phone service'], key='multiplelines')
+        
         submit_button = st.form_submit_button(label='Submit')
         
         if submit_button:
-            make_predictions(pipeline, encoder, threshold)
+            if None in [gender, senior_citizen, partner, dependents, phoneservice, internetservice, onlinesecurity, 
+                        onlinebackup, deviceprotection, techsupport, streamingtv, streamingmovies, contract, 
+                        paperlessbilling, multiplelines, paymentmethod]:
+                st.warning("Please fill all the fields.")
+            else:
+                make_predictions(pipeline, encoder, threshold)
+
+def reset_session_state():
+    st.session_state['prediction'] = None
+    st.session_state['probability'] = None
+    for key in st.session_state.keys():
+        if key not in ['prediction', 'probability', 'selected_model']:
+            del st.session_state[key]
 
 if __name__ == '__main__':
     pipeline, encoder, threshold = select_model()
-    form(pipeline, encoder, threshold)
+    if pipeline and encoder and threshold:
+        form(pipeline, encoder, threshold)
 
-    prediction = st.session_state.get('prediction', None)
-    probability = st.session_state.get('probability', None)
-    
-    if not prediction:
-        st.markdown('No prediction made yet.')
-    elif prediction == 'Yes':
-        st.markdown('⚠️ The customer is likely to churn.')
-        st.markdown('Probability of churn: {:.2f}%'.format(probability[0][1] * 100))
-    else:
-        st.markdown('✅ The customer is not likely to churn.')
-        st.markdown('Probability of retention: {:.2f}%'.format(probability[0][0] * 100))
+        prediction = st.session_state.get('prediction', None)
+        probability = st.session_state.get('probability', None)
+        reset_button = False  # Initialize reset_button to False
+
+        if prediction == 'Yes':
+            st.markdown('⚠️ The customer is likely to churn.')
+            st.markdown('Probability of churn: {:.2f}%'.format(probability[0][1] * 100))
+            reset_button = st.button('Reset for New Prediction')
+        elif prediction == 'No':
+            st.markdown('✅ The customer is not likely to churn.')
+            st.markdown('Probability of retention: {:.2f}%'.format(probability[0][0] * 100))
+            reset_button = st.button('Reset for New Prediction')
+        else:
+            st.markdown('No prediction made yet.')
+
+        if reset_button:
+            reset_session_state()

@@ -81,3 +81,23 @@ Female,Yes,Yes,No,72,Yes,No phone service,DSL,Yes,Yes,No internet service,No int
 Female,Yes,Yes,No,72,Yes,No phone service,DSL,Yes,Yes,No internet service,No internet service,Yes,Yes,Month-to-month,No,Bank transfer (automatic),26,819,2024-06-11 12:44:22.057113,Logistic Regressor,No
 Female,Yes,Yes,No,72,Yes,No phone service,DSL,Yes,Yes,No internet service,No internet service,Yes,Yes,Month-to-month,No,Bank transfer (automatic),26,819,2024-06-11 12:44:22.436745,Logistic Regressor,No
 Female,Yes,Yes,No,72,Yes,No phone service,DSL,Yes,Yes,No internet service,No internet service,Yes,Yes,Month-to-month,No,Bank transfer (automatic),26,819,2024-06-11 12:46:27.531145,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,No,Yes,DSL,Yes,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,18,18,2024-06-12 10:22:59.419901,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,No,Yes,DSL,Yes,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,18,18,2024-06-12 10:23:06.663640,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,No,Yes,DSL,Yes,Yes,No,No,No,No,Month-to-month,Yes,Mailed check,18,18,2024-06-12 10:23:08.069096,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,No,Yes,DSL,Yes,Yes,No,No internet service,No,No,Month-to-month,Yes,Mailed check,18,18,2024-06-12 10:23:16.906872,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,No,Yes,DSL,Yes,Yes,No,No internet service,No,No,Month-to-month,Yes,Mailed check,18,18,2024-06-12 10:23:34.137537,Logistic Regressor,Yes
+Male,Yes,Yes,Yes,1,Yes,No phone service,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),18,18,2024-06-12 10:44:50.403825,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,Yes,No phone service,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),18,18,2024-06-12 10:45:07.328578,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,Yes,No phone service,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),18,18,2024-06-12 10:45:18.035177,XGB Classifier,Yes
+Male,Yes,Yes,Yes,1,Yes,No phone service,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),18,18,2024-06-12 10:49:56.719988,XGB Classifier,Yes
+Male,Yes,Yes,Yes,72,Yes,No phone service,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),100,1800,2024-06-12 10:50:58.114600,XGB Classifier,Yes
+Male,Yes,Yes,Yes,72,Yes,No phone service,Fiber optic,Yes,Yes,Yes,No,Yes,Yes,Month-to-month,Yes,Bank transfer (automatic),50,800,2024-06-12 10:51:18.638114,XGB Classifier,Yes
+Male,No,Yes,Yes,67,Yes,No,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),60,900,2024-06-15 22:33:43.313975,XGB Classifier,No
+Male,No,Yes,Yes,67,Yes,No,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),60,900,2024-06-15 22:34:05.626951,XGB Classifier,No
+Male,No,Yes,Yes,67,Yes,No phone service,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),60,900,2024-06-15 22:34:11.746933,XGB Classifier,No
+Male,No,Yes,Yes,67,Yes,No phone service,DSL,Yes,Yes,Yes,No,Yes,Yes,Two year,Yes,Bank transfer (automatic),60,900,2024-06-15 22:34:24.394014,XGB Classifier,No
+Male,No,Yes,Yes,67,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,Yes,Two year,Yes,Bank transfer (automatic),60,900,2024-06-15 22:34:30.246340,XGB Classifier,No
+Male,No,Yes,Yes,67,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,Yes,Two year,No,Bank transfer (automatic),60,900,2024-06-15 22:34:38.893058,XGB Classifier,No
+Male,No,Yes,Yes,67,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,No,One year,No,Bank transfer (automatic),60,900,2024-06-15 22:35:06.140047,XGB Classifier,No
+Male,No,Yes,Yes,67,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,No,One year,No,Bank transfer (automatic),100,1900,2024-06-15 22:35:26.921058,XGB Classifier,Yes
+Male,No,Yes,Yes,67,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,No,One year,No,Bank transfer (automatic),98,1096,2024-06-15 22:35:51.419288,XGB Classifier,No
