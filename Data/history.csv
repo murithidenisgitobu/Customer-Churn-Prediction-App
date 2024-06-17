@@ -101,3 +101,4 @@ Male,No,Yes,Yes,67,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,Yes,Two year,No,Ba
 Male,No,Yes,Yes,67,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,No,One year,No,Bank transfer (automatic),60,900,2024-06-15 22:35:06.140047,XGB Classifier,No
 Male,No,Yes,Yes,67,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,No,One year,No,Bank transfer (automatic),100,1900,2024-06-15 22:35:26.921058,XGB Classifier,Yes
 Male,No,Yes,Yes,67,No,No phone service,DSL,Yes,Yes,Yes,No,Yes,No,One year,No,Bank transfer (automatic),98,1096,2024-06-15 22:35:51.419288,XGB Classifier,No
+Female,Yes,Yes,No,15,Yes,No,DSL,Yes,Yes,Yes,Yes,No,Yes,Month-to-month,Yes,Mailed check,23,600,2024-06-17 20:17:54.084987,XGB Classifier,Yes,28.271092218218847
