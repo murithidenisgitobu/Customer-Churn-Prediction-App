@@ -34,10 +34,13 @@ def select_dashboard():
     if st.session_state['selected_dashboard'] == 'KPI Dashboard':
         kpi_dashboard()
 
+    if st.session_state['selected_dashboard'] == 'EDA Dashboard':
+        eda_dashboard()
 
 def kpi_dashboard():
     st.header('KPI Dashboard')
     col1, col2 = st.columns(2)
+    
     with col1:
         cols_set_1 = ['gender', 'contract', 'seniorcitizen', 'partner', 'dependents', 'internetservice', 'onlinesecurity', 'paymentmethod']
         for col in cols_set_1:
@@ -47,12 +50,40 @@ def kpi_dashboard():
             fig = px.bar(col_data, x=col, y='Number of Customers', color=col, text='Number of Customers', title=f'{col.upper()} vs Churn')
             st.plotly_chart(fig)
 
+
     with col2:
         cols_set_2 = ['phoneservice', 'multiplelines', 'onlinebackup', 'deviceprotection', 'techsupport', 'streamingtv', 'streamingmovies', 'paperlessbilling']
         for col in cols_set_2:
             col_data = data.groupby(col)['churn'].count().reset_index(name='Number of Customers')
             fig = px.bar(col_data, x=col, y='Number of Customers', color=col, text='Number of Customers', title=f'{col.upper()} vs Churn')
             st.plotly_chart(fig)
+
+def eda_dashboard():
+    col1, col2 = st.columns(2)
+    with col1:
+        st.header('Exploratory Data Analysis Dashboard')
+        col1, col2 = st.columns(2)
+    
+    with col2:
+        pass
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        hist = px.histogram(data, 'totalcharges', title='Total charges distribution', color='churn')
+        st.plotly_chart(hist)
+
+        hist = px.histogram(data, 'tenure', title='Tenure distribution', color='churn')
+        st.plotly_chart(hist)
+
+    with col2:
+        hist = px.histogram(data, 'monthlycharges', title='Monthly charges distribution', color='churn')
+        st.plotly_chart(hist)
+
+        boxplot = px.box(data, ['tenure','monthlycharges'], title='Tenure and Monthly Charges Boxplots', color='churn')
+        st.plotly_chart(boxplot)
+
+        boxplot = px.box(data, ['totalcharges'], title='Total Charges Boxplot', color='churn')
+        st.plotly_chart(boxplot)
 
 
 if __name__ == '__main__':
