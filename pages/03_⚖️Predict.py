@@ -20,19 +20,31 @@ def load_lr():
     return model, threshold
 
 def select_model():
-    st.write("### Choose your preferred model")
-    model_options = ['XGB Classifier', 'Logistic Regressor']
-    model_choice = st.selectbox('Select model', ['Choose an option'] + model_options, index=0, key='selected_model')
+    col1, col2 = st.columns(2)
+
+
+    with col1:
+        st.write("### Choose your preferred model")
+        model_options = ['XGB Classifier', 'Logistic Regressor']
+        model_choice = st.selectbox('Select model', ['Choose an option'] + model_options, index=0, key='selected_model')
     
+
+    with col2:
+        pass
+
+
     if model_choice == 'XGB Classifier':
         pipeline, threshold = load_xgb()
+
     elif model_choice == 'Logistic Regressor':
         pipeline, threshold = load_lr()
+
     else:
         pipeline, threshold = None, None
 
     if pipeline and threshold:
         encoder = joblib.load("./Model/encoder.joblib")
+
     else:
         encoder = None
 
@@ -80,6 +92,9 @@ def make_predictions(pipeline, encoder, threshold):
     history_df['Prediction Time'] = datetime.datetime.today()
     history_df['Model Used'] = st.session_state['selected_model']
     history_df['Prediction'] = prediction
+    history_df['Probability'] = round(probability[0, 1]*100, 2)
+
+    # save the history df
     history_df.to_csv('./data/history.csv', mode='a', header=not os.path.exists('./data/history.csv'), index=False)
 
     # Updating state
