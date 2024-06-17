@@ -1,3 +1,0 @@
-gender,seniorcitizen,partner,dependents,tenure,phoneservice,multiplelines,internetservice,onlinesecurity,onlinebackup,deviceprotection,techsupport,streamingtv,streamingmovies,contract,paperlessbilling,paymentmethod,monthlycharges,totalcharges,Prediction Time,Model Used,Prediction,Probability
-Male,Yes,Yes,Yes,17,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No internet service,No internet service,One year,Yes,Bank transfer (automatic),54,900,2024-06-17 19:54:14.404923,Logistic Regressor,Yes,0.0988532313597015
-Male,Yes,Yes,Yes,17,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No internet service,No internet service,One year,Yes,Bank transfer (automatic),54,900,2024-06-17 19:54:32.139287,XGB Classifier,No,0.04583586891808324
