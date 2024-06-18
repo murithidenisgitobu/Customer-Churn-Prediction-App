@@ -9,6 +9,7 @@ st.set_page_config(
     layout="wide"
 )
 
+
 def read_history_date():
 
     file_path = 'Data\history.csv'
