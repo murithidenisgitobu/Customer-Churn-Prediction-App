@@ -1,3 +1,2 @@
 gender,seniorcitizen,partner,dependents,tenure,phoneservice,multiplelines,internetservice,onlinesecurity,onlinebackup,deviceprotection,techsupport,streamingtv,streamingmovies,contract,paperlessbilling,paymentmethod,monthlycharges,totalcharges,Prediction Time,Model Used,Will Customer Churn,Probability
-Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Mailed check,28,400,2024-06-18 11:55:06.378355,Logistic Regressor,Yes,33.81
-Male,Yes,Yes,Yes,72,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Mailed check,28,400,2024-06-18 12:21:50.276191,Logistic Regressor,No,92.98
+Female,Yes,Yes,Yes,10,Yes,Yes,Fiber optic,No,No,No internet service,Yes,Yes,No,One year,No,Electronic check,30,230,12:31,XGB Classifier,Yes,16.93

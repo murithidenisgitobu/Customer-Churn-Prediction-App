@@ -89,7 +89,17 @@ def make_predictions(pipeline, encoder, threshold):
 
     # Save the prediction history
     history_df = df.copy()
-    history_df['Prediction Time'] = datetime.datetime.today()
+
+
+    # Get the current date and time
+    now = datetime.datetime.now()
+
+    # Extract hour and minute
+    hour = now.hour
+    minute = now.minute
+
+# Create a new column in your DataFrame with the hour and minute
+    history_df['Prediction Time'] = f"{hour:02d}:{minute:02d}"
     history_df['Model Used'] = st.session_state['selected_model']
     history_df['Will Customer Churn'] = prediction
     history_df['Probability'] = np.where(pred == 0,
