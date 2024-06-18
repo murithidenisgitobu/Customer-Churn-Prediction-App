@@ -1,2 +1,2 @@
 gender,seniorcitizen,partner,dependents,tenure,phoneservice,multiplelines,internetservice,onlinesecurity,onlinebackup,deviceprotection,techsupport,streamingtv,streamingmovies,contract,paperlessbilling,paymentmethod,monthlycharges,totalcharges,Prediction Time,Model Used,Will Customer Churn,Probability
-Female,Yes,Yes,Yes,10,Yes,Yes,Fiber optic,No,No,No internet service,Yes,Yes,No,One year,No,Electronic check,30,230,12:31,XGB Classifier,Yes,16.93
+Female,Yes,Yes,Yes,17,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No internet service,Yes,One year,Yes,Electronic check,18,98,12:47 Date: 2024-06-18,XGB Classifier,Yes,31.74
