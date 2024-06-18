@@ -38,7 +38,13 @@ def select_dashboard():
         eda_dashboard()
 
 def kpi_dashboard():
-    st.header('KPI Dashboard')
+    col2, col3 = st.columns(2)
+    with col2:
+        st.header('Key Performance Indicator Dashboard')
+    with col3:
+        pass
+
+
     col1, col2 = st.columns(2)
     
     with col1:
@@ -47,7 +53,8 @@ def kpi_dashboard():
             col_data = data.groupby(col)['churn'].count().reset_index(name='Number of Customers')
             if col == 'seniorcitizen':
                 col_data[col] = col_data[col].replace({0: 'Non-Senior Citizen', 1: 'Senior Citizen'})
-            fig = px.bar(col_data, x=col, y='Number of Customers', color=col, text='Number of Customers', title=f'{col.upper()} vs Churn')
+            fig = px.bar(col_data, x=col, y='Number of Customers', color=col, text='Number of Customers', 
+                         title=f'{col.upper()} vs Churn')
             st.plotly_chart(fig)
 
 
@@ -74,6 +81,10 @@ def eda_dashboard():
 
         hist = px.histogram(data, 'tenure', title='Tenure distribution', color='churn')
         st.plotly_chart(hist)
+
+        corr = data[['tenure', 'monthlycharges', 'totalcharges']].corr()
+        corr = px.imshow(corr, text_auto=True, title= 'Numerical columns correlations')
+        st.plotly_chart(corr)
 
     with col2:
         hist = px.histogram(data, 'monthlycharges', title='Monthly charges distribution', color='churn')
