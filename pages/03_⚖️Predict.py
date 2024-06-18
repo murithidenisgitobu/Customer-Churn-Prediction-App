@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 import datetime
 import os
-
+import numpy as np
 # Set up predict page
 st.set_page_config(page_title="Predictions", page_icon='⚖️', layout="wide")
 st.title("Predict Customer Churn!")
@@ -91,8 +91,11 @@ def make_predictions(pipeline, encoder, threshold):
     history_df = df.copy()
     history_df['Prediction Time'] = datetime.datetime.today()
     history_df['Model Used'] = st.session_state['selected_model']
-    history_df['Prediction'] = prediction
-    history_df['Probability'] = round(probability[0, 1]*100, 2)
+    history_df['Will Customer Churn'] = prediction
+    history_df['Probability'] = np.where(pred == 0,
+                                     np.round(probability[:, 0] * 100, 2),
+                                     np.round(probability[:, 1] * 100, 2))
+    
 
     # save the history df
     history_df.to_csv('./data/history.csv', mode='a', header=not os.path.exists('./data/history.csv'), index=False)
