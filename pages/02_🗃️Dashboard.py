@@ -87,4 +87,7 @@ def eda_dashboard():
 
 
 if __name__ == '__main__':
-    select_dashboard()
+    if st.session_state["authentication_status"]:
+        select_dashboard()
+    else:	
+        st.info('Login in the Home page to access Dashboard')

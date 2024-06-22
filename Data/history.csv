@@ -1,3 +1,5 @@
 gender,seniorcitizen,partner,dependents,tenure,phoneservice,multiplelines,internetservice,onlinesecurity,onlinebackup,deviceprotection,techsupport,streamingtv,streamingmovies,contract,paperlessbilling,paymentmethod,monthlycharges,totalcharges,Prediction Time,Model Used,Will Customer Churn,Probability
 Female,Yes,Yes,Yes,17,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No internet service,Yes,One year,Yes,Electronic check,18,98,12:47 Date: 2024-06-18,XGB Classifier,Yes,31.74
 Female,Yes,Yes,No,1,No,No phone service,DSL,Yes,No,No internet service,No internet service,No internet service,No,Month-to-month,No,Bank transfer (automatic),18,18,Time: 13:35 Date: 2024-06-18,Logistic Regressor,Yes,26.69
+Male,No,No,No,45,Yes,Yes,DSL,Yes,No,Yes,Yes,Yes,Yes,One year,Yes,Electronic check,20,400,Time: 11:04 Date: 2024-06-22,XGB Classifier,Yes,23.29
+Male,No,No,No,45,Yes,Yes,DSL,Yes,No,Yes,Yes,Yes,Yes,One year,Yes,Electronic check,20,400,Time: 11:05 Date: 2024-06-22,Logistic Regressor,Yes,9.45

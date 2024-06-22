@@ -25,5 +25,9 @@ def read_history_date():
 
 
 if __name__ == '__main__':
-    st.title('History Page')
-    read_history_date()
+    if st.session_state["authentication_status"]:
+        st.title('History Page')
+        read_history_date()
+    else:
+                    st.info('Login in the Home page to access History Page')
+
