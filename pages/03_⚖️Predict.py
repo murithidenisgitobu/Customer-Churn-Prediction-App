@@ -4,11 +4,30 @@ import pandas as pd
 import datetime
 import os
 import numpy as np
+import yaml
+from yaml.loader import  SafeLoader
+import streamlit_authenticator as stauth
 # Set up predict page
 
 if st.session_state["authentication_status"]:
     st.set_page_config(page_title="Predictions", page_icon='⚖️', layout="wide")
     st.title("Predict Customer Churn!")
+    
+
+    with open('config.yaml') as file:
+     config = yaml.load(file, Loader=SafeLoader)
+
+
+    authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['pre-authorized']
+) 
+    
+    authenticator.logout(location='sidebar')
+
 
     # Functions to load models and encoder
     @st.cache_resource(show_spinner='Models Loading')

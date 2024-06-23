@@ -1,6 +1,10 @@
 import streamlit as st
 import pyodbc
 import pandas as pd
+import streamlit_authenticator as stauth
+import yaml
+from yaml.loader import  SafeLoader
+
 
 # Set up Home page
 # Configure the home page
@@ -10,7 +14,22 @@ st.set_page_config(
     layout="wide"
 )
 
+with open('config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
+
+
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+    config['pre-authorized']
+)
+
+
 if st.session_state["authentication_status"]:
+
+    authenticator.logout(location='sidebar')
 
 
     @st.cache_resource(show_spinner="Connecting to Database......")
@@ -113,3 +132,4 @@ if st.session_state["authentication_status"]:
         display_columns(churn_data_github, get_numerical_columns(churn_data_github), "github_data")
 else:	
     st.info("Login in the Home page to access Data")
+
