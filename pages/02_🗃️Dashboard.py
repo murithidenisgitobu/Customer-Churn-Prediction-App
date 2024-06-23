@@ -46,8 +46,19 @@ def kpi_dashboard():
 
 
     col1, col2 = st.columns(2)
+
+    # Churn Rate vs Tenure
+    churn_rate = data.groupby(['churn', 'tenure'])['churn'].count()
+    churn_rate = churn_rate.reset_index(name='Number of Customers')
+    churn_rate = churn_rate.pivot(index='tenure', columns='churn', values='Number of Customers')
+    churn_rate['Churn Rate'] = churn_rate['Yes'] / (churn_rate['No'] + churn_rate['Yes'])
+    churn_rate = churn_rate.reset_index()
+    churn_rate = px.line(churn_rate, x='tenure', y='Churn Rate', title='Churn Rate vs Tenure')
+    st.plotly_chart(churn_rate)
+        
     
     with col1:
+        
         cols_set_1 = ['gender', 'contract', 'seniorcitizen', 'partner', 'dependents', 'internetservice', 'onlinesecurity', 'paymentmethod']
         for col in cols_set_1:
             col_data = data.groupby(col)['churn'].count().reset_index(name='Number of Customers')
@@ -95,6 +106,8 @@ def eda_dashboard():
 
         boxplot = px.box(data, ['totalcharges'], title='Total Charges Boxplot', color='churn')
         st.plotly_chart(boxplot)
+
+        
 
 
 if __name__ == '__main__':
