@@ -3,3 +3,6 @@ Female,Yes,Yes,Yes,17,Yes,Yes,DSL,Yes,Yes,Yes,Yes,No internet service,Yes,One ye
 Female,Yes,Yes,No,1,No,No phone service,DSL,Yes,No,No internet service,No internet service,No internet service,No,Month-to-month,No,Bank transfer (automatic),18,18,Time: 13:35 Date: 2024-06-18,Logistic Regressor,Yes,26.69
 Male,No,No,No,45,Yes,Yes,DSL,Yes,No,Yes,Yes,Yes,Yes,One year,Yes,Electronic check,20,400,Time: 11:04 Date: 2024-06-22,XGB Classifier,Yes,23.29
 Male,No,No,No,45,Yes,Yes,DSL,Yes,No,Yes,Yes,Yes,Yes,One year,Yes,Electronic check,20,400,Time: 11:05 Date: 2024-06-22,Logistic Regressor,Yes,9.45
+Female,No,No,Yes,1,No,Yes,DSL,No,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Mailed check,18,18,Time: 22:40 Date: 2024-06-23,XGB Classifier,Yes,75.23
+Male,No,No,Yes,72,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Electronic check,18,900,Time: 22:41 Date: 2024-06-23,XGB Classifier,No,97.23
+Male,No,Yes,Yes,65,Yes,Yes,DSL,No,Yes,No,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,900,Time: 22:44 Date: 2024-06-23,XGB Classifier,Yes,60.28
