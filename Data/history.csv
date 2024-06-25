@@ -14,3 +14,4 @@ Female,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit car
 Female,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),18,18,Time: 09:26 Date: 2024-06-25,Logistic Regressor,Yes,12.37
 Female,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),18,18,Time: 09:26 Date: 2024-06-25,Logistic Regressor,Yes,12.37
 Female,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),18,18,Time: 09:26 Date: 2024-06-25,XGB Classifier,Yes,28.86
+Male,No,No,No,72,Yes,No,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),18,900,Time: 09:40 Date: 2024-06-25,XGB Classifier,No,98.4
