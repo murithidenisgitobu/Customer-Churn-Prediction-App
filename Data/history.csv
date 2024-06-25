@@ -6,3 +6,11 @@ Male,No,No,No,45,Yes,Yes,DSL,Yes,No,Yes,Yes,Yes,Yes,One year,Yes,Electronic chec
 Female,No,No,Yes,1,No,Yes,DSL,No,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Mailed check,18,18,Time: 22:40 Date: 2024-06-23,XGB Classifier,Yes,75.23
 Male,No,No,Yes,72,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Electronic check,18,900,Time: 22:41 Date: 2024-06-23,XGB Classifier,No,97.23
 Male,No,Yes,Yes,65,Yes,Yes,DSL,No,Yes,No,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,900,Time: 22:44 Date: 2024-06-23,XGB Classifier,Yes,60.28
+Male,Yes,Yes,Yes,1,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Electronic check,18,18,Time: 23:18 Date: 2024-06-23,XGB Classifier,Yes,59.39
+Male,Yes,No,No,10,Yes,No,DSL,Yes,No,No,Yes,No,No,One year,Yes,Bank transfer (automatic),18,180,Time: 09:10 Date: 2024-06-25,XGB Classifier,Yes,10.19
+Female,Yes,Yes,Yes,72,Yes,Yes,Fiber optic,Yes,No,Yes,Yes,Yes,Yes,Two year,Yes,Mailed check,18,789,Time: 09:14 Date: 2024-06-25,XGB Classifier,Yes,11.04
+Male,Yes,Yes,Yes,23,Yes,No,DSL,No,Yes,No,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,900,Time: 09:21 Date: 2024-06-25,XGB Classifier,Yes,64.74
+Female,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),18,18,Time: 09:26 Date: 2024-06-25,Logistic Regressor,Yes,12.37
+Female,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),18,18,Time: 09:26 Date: 2024-06-25,Logistic Regressor,Yes,12.37
+Female,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),18,18,Time: 09:26 Date: 2024-06-25,Logistic Regressor,Yes,12.37
+Female,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),18,18,Time: 09:26 Date: 2024-06-25,XGB Classifier,Yes,28.86
