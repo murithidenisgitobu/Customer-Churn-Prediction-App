@@ -16,10 +16,7 @@ def reset_session_state():
             del st.session_state[key]
 
 # Set up the predict page
-if 'authentication_status' not in st.session_state:
-    st.session_state['authentication_status'] = None
-
-elif st.session_state["authentication_status"]:
+if st.session_state["authentication_status"]:
     st.set_page_config(page_title="Predictions", page_icon='⚖️', layout="wide")
     st.title("Predict Customer Churn!")
 
