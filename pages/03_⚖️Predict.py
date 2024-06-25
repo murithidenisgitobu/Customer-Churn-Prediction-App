@@ -4,49 +4,83 @@ import pandas as pd
 import datetime
 import os
 import numpy as np
-# Set up predict page
+import yaml
+from yaml.loader import SafeLoader
+import streamlit_authenticator as stauth
 
-if st.session_state["authentication_status"]:
+# Function to reset session state
+def reset_session_state():
+    keys_to_keep = ['authentication_status', 'selected_model']
+    for key in list(st.session_state.keys()):
+        if key not in keys_to_keep:
+            del st.session_state[key]
+
+# Set up the predict page
+if 'authentication_status' not in st.session_state:
+    st.session_state['authentication_status'] = None
+
+elif st.session_state["authentication_status"]:
     st.set_page_config(page_title="Predictions", page_icon='⚖️', layout="wide")
     st.title("Predict Customer Churn!")
+
+    try:
+        with open('config.yaml') as file:
+            config = yaml.load(file, Loader=SafeLoader)
+
+        authenticator = stauth.Authenticate(
+            config['credentials'],
+            config['cookie']['name'],
+            config['cookie']['key'],
+            config['cookie']['expiry_days'],
+            config['pre-authorized']
+        )
+
+        authenticator.logout(location='sidebar')
+
+    except Exception as e:
+        st.error(f"Error loading configuration: {e}")
 
     # Functions to load models and encoder
     @st.cache_resource(show_spinner='Models Loading')
     def load_xgb():
-        model, threshold = joblib.load('./Model/best_gb_model_and_threshold.joblib')
-        return model, threshold
+        try:
+            model, threshold = joblib.load('./Model/best_gb_model_and_threshold.joblib')
+            return model, threshold
+        except Exception as e:
+            st.error(f"Error loading XGB model: {e}")
+            return None, None
 
     @st.cache_resource(show_spinner='Models Loading')
     def load_lr():
-        model, threshold = joblib.load('./Model/best_LR_model_and_threshold.joblib')
-        return model, threshold
+        try:
+            model, threshold = joblib.load('./Model/best_LR_model_and_threshold.joblib')
+            return model, threshold
+        except Exception as e:
+            st.error(f"Error loading Logistic Regression model: {e}")
+            return None, None
 
     def select_model():
         col1, col2 = st.columns(2)
-
-
         with col1:
             st.write("### Choose your preferred model")
             model_options = ['XGB Classifier', 'Logistic Regressor']
             model_choice = st.selectbox('Select model', ['Choose an option'] + model_options, index=0, key='selected_model')
-        
-
         with col2:
             pass
 
-
         if model_choice == 'XGB Classifier':
             pipeline, threshold = load_xgb()
-
         elif model_choice == 'Logistic Regressor':
             pipeline, threshold = load_lr()
-
         else:
             pipeline, threshold = None, None
 
         if pipeline and threshold:
-            encoder = joblib.load("./Model/encoder.joblib")
-
+            try:
+                encoder = joblib.load("./Model/encoder.joblib")
+            except Exception as e:
+                st.error(f"Error loading encoder: {e}")
+                encoder = None
         else:
             encoder = None
 
@@ -60,72 +94,54 @@ if st.session_state["authentication_status"]:
 
     # Function to make predictions
     def make_predictions(pipeline, encoder, threshold):
-        # Define columns
         columns = ['gender', 'seniorcitizen', 'partner', 'dependents', 'tenure',
-                'phoneservice', 'multiplelines', 'internetservice', 'onlinesecurity',
-                'onlinebackup', 'deviceprotection', 'techsupport', 'streamingtv',
-                'streamingmovies', 'contract', 'paperlessbilling', 'paymentmethod',
-                'monthlycharges', 'totalcharges']
+                   'phoneservice', 'multiplelines', 'internetservice', 'onlinesecurity',
+                   'onlinebackup', 'deviceprotection', 'techsupport', 'streamingtv',
+                   'streamingmovies', 'contract', 'paperlessbilling', 'paymentmethod',
+                   'monthlycharges', 'totalcharges']
 
-        # Define data
         data = [[st.session_state['gender'], st.session_state['senior_citizen'], 
-                st.session_state['partner'], st.session_state['dependents'], 
-                st.session_state['tenure'], st.session_state['phoneservice'], 
-                st.session_state['multiplelines'], st.session_state['internetservice'], 
-                st.session_state['onlinesecurity'], st.session_state['onlinebackup'], 
-                st.session_state['deviceprotection'], st.session_state['techsupport'], 
-                st.session_state['streamingtv'], st.session_state['streamingmovies'], 
-                st.session_state['contract'], st.session_state['paperlessbilling'], 
-                st.session_state['paymentmethod'], st.session_state['monthlycharges'], 
-                st.session_state['totalcharges']]]
+                 st.session_state['partner'], st.session_state['dependents'], 
+                 st.session_state['tenure'], st.session_state['phoneservice'], 
+                 st.session_state['multiplelines'], st.session_state['internetservice'], 
+                 st.session_state['onlinesecurity'], st.session_state['onlinebackup'], 
+                 st.session_state['deviceprotection'], st.session_state['techsupport'], 
+                 st.session_state['streamingtv'], st.session_state['streamingmovies'], 
+                 st.session_state['contract'], st.session_state['paperlessbilling'], 
+                 st.session_state['paymentmethod'], st.session_state['monthlycharges'], 
+                 st.session_state['totalcharges']]]
 
-        # Create dataframe for prediction
         df = pd.DataFrame(data, columns=columns)
 
-        # Make predictions
         probability = pipeline.predict_proba(df)
         pred = (probability[:, 1] >= threshold).astype(int)
-        
         pred = int(pred[0])
         prediction = encoder.inverse_transform([pred])[0]
 
-        # Save the prediction history
         history_df = df.copy()
-
-
-        # Get the current date and time
         now = datetime.datetime.now()
-
-        # Extract hour and minute
         date = now.date()
         hour = now.hour
         minute = now.minute
-
-    # Create a new column in your DataFrame with the hour and minute
         history_df['Prediction Time'] = f"Time: {hour:02d}:{minute:02d} Date: {date}"
         history_df['Model Used'] = st.session_state['selected_model']
         history_df['Will Customer Churn'] = prediction
         history_df['Probability'] = np.where(pred == 0,
-                                        np.round(probability[:, 0] * 100, 2),
-                                        np.round(probability[:, 1] * 100, 2))
-        
+                                             np.round(probability[:, 0] * 100, 2),
+                                             np.round(probability[:, 1] * 100, 2))
 
-        # save the history df
         history_df.to_csv('./data/history.csv', mode='a', header=not os.path.exists('./data/history.csv'), index=False)
 
-        # Updating state
         st.session_state['prediction'] = prediction
         st.session_state['probability'] = probability
 
         return prediction, probability
 
-    # Function to create select box with a watermark
     def selectbox_with_placeholder(label, options, key):
         placeholder = 'Choose an option'
         selected = st.selectbox(label, [placeholder] + options, key=key)
         return selected if selected != placeholder else None
 
-    # Input customer information
     def form(pipeline, encoder, threshold):
         st.write("### Enter Customer's Information")
         with st.form(key='Customer Information'):
@@ -138,8 +154,7 @@ if st.session_state["authentication_status"]:
                 partner = selectbox_with_placeholder('Has a partner', ['Yes', 'No'], key='partner')
                 dependents = selectbox_with_placeholder('Has dependents', ['Yes', 'No'], key='dependents')
                 phoneservice = selectbox_with_placeholder('Has phone service', ['Yes', 'No'], key='phoneservice')
-                paymentmethod = selectbox_with_placeholder('Payment method', ['Electronic check', 'Mailed check', 'Bank transfer (automatic)',
-                                                                            'Credit card (automatic)'], key='paymentmethod')
+                paymentmethod = selectbox_with_placeholder('Payment method', ['Electronic check', 'Mailed check', 'Bank transfer (automatic)', 'Credit card (automatic)'], key='paymentmethod')
 
             with col2:
                 monthly_charges = st.number_input('Monthly charges', min_value=18, max_value=119, step=1, key='monthlycharges')
@@ -160,19 +175,10 @@ if st.session_state["authentication_status"]:
             submit_button = st.form_submit_button(label='Submit')
             
             if submit_button:
-                if None in [gender, senior_citizen, partner, dependents, phoneservice, internetservice, onlinesecurity, 
-                            onlinebackup, deviceprotection, techsupport, streamingtv, streamingmovies, contract, 
-                            paperlessbilling, multiplelines, paymentmethod]:
+                if None in [gender, senior_citizen, partner, dependents, phoneservice, internetservice, onlinesecurity, onlinebackup, deviceprotection, techsupport, streamingtv, streamingmovies, contract, paperlessbilling, multiplelines, paymentmethod]:
                     st.warning("Please fill all the fields.")
                 else:
                     make_predictions(pipeline, encoder, threshold)
-
-    def reset_session_state():
-        st.session_state['prediction'] = None
-        st.session_state['probability'] = None
-        for key in st.session_state.keys():
-            if key not in ['prediction', 'probability', 'selected_model']:
-                del st.session_state[key]
 
     if __name__ == '__main__':
         pipeline, encoder, threshold = select_model()
@@ -196,5 +202,6 @@ if st.session_state["authentication_status"]:
 
             if reset_button:
                 reset_session_state()
+                st.experimental_rerun()
 else:
-            st.info('Login in the Home page to access Predict Page')
+    st.info('Login in the Home page to access Predict Page')
