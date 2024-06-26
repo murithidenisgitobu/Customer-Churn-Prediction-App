@@ -24,3 +24,8 @@ Female,No,Yes,Yes,52,Yes,Yes,Fiber optic,Yes,Yes,No,Yes,Yes,Yes,One year,Yes,Ele
 Female,Yes,Yes,Yes,65,No,Yes,DSL,Yes,Yes,No,No,Yes,Yes,Two year,Yes,Bank transfer (automatic),23,987,Time: 13:18 Date: 2024-06-25,XGB Classifier,No,91.71
 Male,Yes,Yes,No,11,Yes,Yes,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Credit card (automatic),67,700,Time: 13:25 Date: 2024-06-25,XGB Classifier,No,97.05
 Male,No,Yes,Yes,1,Yes,Yes,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Credit card (automatic),18,18,Time: 13:28 Date: 2024-06-25,XGB Classifier,Yes,85.3
+Male,No,Yes,Yes,32,Yes,Yes,DSL,Yes,No,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),45,1238,Time: 13:58 Date: 2024-06-25,XGB Classifier,No,98.21
+Female,Yes,No,Yes,1,No,No,Fiber optic,Yes,Yes,Yes,Yes,Yes,Yes,Month-to-month,Yes,Electronic check,18,18,Time: 14:05 Date: 2024-06-25,Logistic Regressor,Yes,54.35
+Male,Yes,Yes,Yes,1,Yes,Yes,DSL,Yes,No,Yes,Yes,Yes,Yes,One year,Yes,Bank transfer (automatic),18,18,Time: 14:21 Date: 2024-06-25,XGB Classifier,Yes,55.01
+Male,No,Yes,Yes,72,Yes,No,DSL,Yes,Yes,Yes,Yes,Yes,Yes,Two year,Yes,Bank transfer (automatic),18,1100,Time: 14:27 Date: 2024-06-25,Logistic Regressor,No,98.65
+Female,No,Yes,Yes,34,Yes,No phone service,Fiber optic,Yes,Yes,No,No,No,Yes,Two year,No,Bank transfer (automatic),45,700,Time: 14:27 Date: 2024-06-25,Logistic Regressor,Yes,10.29
