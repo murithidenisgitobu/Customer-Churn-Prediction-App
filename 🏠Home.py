@@ -91,6 +91,6 @@ if st.session_state["authentication_status"]:
             - **Email**: [iamdenis46@gmail.com](mailto:iamdenis46@gmail.com)
             - **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/murithidenisgitobu/)
             - **GitHub**: [GitHub Profile](https://github.com/murithidenisgitobu/)
-            - **Medium**: [Medium Profile](https://medium.com/murithidenisgitobu)
+            - **Medium**: [Medium Profile](https://medium.com/@murithidenisgitobu)
             """)
 
