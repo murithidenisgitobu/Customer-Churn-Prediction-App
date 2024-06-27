@@ -127,7 +127,7 @@ if st.session_state["authentication_status"]:
                                              np.round(probability[:, 0] * 100, 2),
                                              np.round(probability[:, 1] * 100, 2))
 
-        history_df.to_csv('./data/history.csv', mode='a', header=not os.path.exists('./data/history.csv'), index=False)
+        history_df.to_csv('./Data/history.csv', mode='a', header=not os.path.exists('./Data/history.csv'), index=False)
 
         st.session_state['prediction'] = prediction
         st.session_state['probability'] = probability
