@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import pandas as pd
 import yaml
-from yaml.loader import  SafeLoader
+from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 
 # Set up Home page
@@ -12,10 +12,11 @@ st.set_page_config(
     layout="wide"
 )
 
+# Load configuration from config.yaml
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
-
+# Initialize Streamlit Authenticator
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
@@ -24,28 +25,21 @@ authenticator = stauth.Authenticate(
     config['pre-authorized']
 )
 
+def read_history_data():
+    file_path = 'Data/history.csv'  # Use forward slash for cross-platform compatibility
 
-def read_history_date():
-
-    file_path = 'Data\history.csv'
-
-    file_exists = os.path.exists(file_path)
-
-    if file_exists:
+    if os.path.exists(file_path):
         df = pd.read_csv(file_path)
         st.dataframe(df)
         return df
     else:
+        st.warning(f"File '{file_path}' not found.")
         return None
 
-
-
 if __name__ == '__main__':
-    if st.session_state["authentication_status"]:
+    if st.session_state.get("authentication_status"):
         authenticator.logout(location='sidebar')
-
         st.title('History Page')
-        read_history_date()
+        read_history_data()
     else:
-                    st.info('Login in the Home page to access History Page')
-
+        st.info('Login on the Home page to access the History Page')
