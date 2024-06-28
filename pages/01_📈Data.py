@@ -36,7 +36,7 @@ if st.session_state["authentication_status"]:
     @st.cache_resource(show_spinner="Connecting to Database...")
     def get_db_connection():
         connection_string = (
-            "DRIVER={SQL Server};"
+            "DRIVER={ODBC Driver 17 for SQL Server};"
             f"SERVER={os.environ.get('SERVER')};"
             f"DATABASE={os.environ.get('DATABASE')};"
             f"UID={os.environ.get('USERNAME')};"
