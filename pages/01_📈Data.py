@@ -1,5 +1,6 @@
 import streamlit as st
 import pyodbc
+import os
 import pandas as pd
 import streamlit_authenticator as stauth
 import yaml
@@ -32,17 +33,16 @@ if st.session_state["authentication_status"]:
     authenticator.logout(location='sidebar')
 
 
-    @st.cache_resource(show_spinner="Connecting to Database......")
+    @st.cache_resource(show_spinner="Connecting to Database...")
     def get_db_connection():
         connection_string = (
             "DRIVER={SQL Server};"
-            f"SERVER={st.secrets['SERVER']};"
-            f"DATABASE={st.secrets['DATABASE']};"
-            f"UID={st.secrets['USERNAME']};"
-            f"PWD={st.secrets['PASSWORD']}"
+            f"SERVER={os.environ.get('SERVER')};"
+            f"DATABASE={os.environ.get('DATABASE')};"
+            f"UID={os.environ.get('USERNAME')};"
+            f"PWD={os.environ.get('PASSWORD')}"
         )
         return pyodbc.connect(connection_string)
-
     @st.cache_data(show_spinner="Loading data...")
     def get_sql_data(_connection):
         churn_data_query = "SELECT * FROM dbo.LP2_Telco_churn_first_3000"
