@@ -5,6 +5,8 @@ import pandas as pd
 import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import  SafeLoader
+import pymssql
+
 
 
 # Set up Home page
@@ -35,14 +37,17 @@ if st.session_state["authentication_status"]:
 
     @st.cache_resource(show_spinner="Connecting to Database...")
     def get_db_connection():
-        connection_string = (
-            "DRIVER={ODBC Driver 17 for SQL Server};"
-            f"SERVER={os.environ.get('SERVER')};"
-            f"DATABASE={os.environ.get('DATABASE')};"
-            f"UID={os.environ.get('USERNAME')};"
-            f"PWD={os.environ.get('PASSWORD')}"
-        )
-        return pyodbc.connect(connection_string)
+        server = os.environ.get('SERVER')
+        database = os.environ.get('DATABASE')
+        username = os.environ.get('USERNAME')
+        password = os.environ.get('PASSWORD')
+        
+        try:
+            connection = pymssql.connect(server=server, user=username, password=password, database=database)
+            return connection
+        except pymssql.Error as e:
+            st.error(f"Error connecting to database: {e}")
+        return None
     @st.cache_data(show_spinner="Loading data...")
     def get_sql_data(_connection):
         churn_data_query = "SELECT * FROM dbo.LP2_Telco_churn_first_3000"
